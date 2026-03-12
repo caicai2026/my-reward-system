@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>小星星奖励系统 - 儿童行为管理</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Cordova脚本（构建时自动注入） -->
+    <script src="cordova.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-star"></i>
+                    <h1>小星星奖励系统</h1>
+                </div>
+                <p class="subtitle">帮助小朋友养成好习惯！</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- 代币显示区域 -->
+            <section class="token-section">
+                <div class="token-display">
+                    <div class="token-count">
+                        <i class="fas fa-star token-icon"></i>
+                        <div class="token-info">
+                            <h2>我的星星币</h2>
+                            <div class="token-amount" id="tokenAmount">0</div>
+                        </div>
+                    </div>
+                    <div class="token-stats">
+                        <div class="stat">
+                            <i class="fas fa-trophy"></i>
+                            <span>今天奖励: <span id="todayRewards">0</span></span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>本周兑换: <span id="weekUsage">0</span>分钟</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 行为记录区域 -->
+            <section class="behavior-section">
+                <h2><i class="fas fa-thumbs-up"></i> 好行为奖励</h2>
+                <div class="behavior-grid" id="goodBehaviors">
+                    <!-- 好行为按钮将通过JavaScript动态生成 -->
+                </div>
+
+                <h2><i class="fas fa-thumbs-down"></i> 需要改进的行为</h2>
+                <div class="behavior-grid" id="badBehaviors">
+                    <!-- 坏行为按钮将通过JavaScript动态生成 -->
+                </div>
+            </section>
+
+            <!-- 兑换区域 -->
+            <section class="exchange-section">
+                <h2><i class="fas fa-gift"></i> 兑换奖励</h2>
+                <div class="exchange-grid" id="exchangeOptions">
+                    <!-- 兑换选项将通过JavaScript动态生成 -->
+                </div>
+            </section>
+
+            <!-- 历史记录区域 -->
+            <section class="history-section">
+                <h2><i class="fas fa-history"></i> 今日记录</h2>
+                <div class="history-list" id="historyList">
+                    <!-- 历史记录将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 小星星奖励系统 - 专为6岁小朋友设计</p>
+            <div class="footer-links">
+                <button class="btn-secondary" onclick="resetDay()">
+                    <i class="fas fa-redo"></i> 重置今日数据
+                </button>
+                <button class="btn-secondary" onclick="showHelp()">
+                    <i class="fas fa-question-circle"></i> 使用说明
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 帮助模态框 -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
+            <h2><i class="fas fa-question-circle"></i> 使用说明</h2>
+            <div class="help-content">
+                <h3><i class="fas fa-star"></i> 星星币系统</h3>
+                <ul>
+                    <li>做好的事情可以获得星星币奖励</li>
+                    <li>需要改进的事情会扣除星星币</li>
+                    <li>星星币可以用来兑换看电视、玩游戏的时间</li>
+                </ul>
+
+                <h3><i class="fas fa-child"></i> 适合6岁小朋友的行为</h3>
+                <div class="help-grid">
+                    <div class="help-item good">
+                        <h4>好行为</h4>
+                        <ul>
+                            <li>吃饭吃干净 (+3星星币)</li>
+                            <li>自己收拾玩具 (+2星星币)</li>
+                            <li>按时睡觉 (+3星星币)</li>
+                            <li>帮助家人 (+4星星币)</li>
+                            <li>认真学习 (+5星星币)</li>
+                        </ul>
+                    </div>
+                    <div class="help-item bad">
+                        <h4>需要改进的行为</h4>
+                        <ul>
+                            <li>乱扔东西 (-2星星币)</li>
+                            <li>不按时睡觉 (-3星星币)</li>
+                            <li>发脾气 (-2星星币)</li>
+                            <li>不礼貌 (-1星星币)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-gift"></i> 兑换规则</h3>
+                <ul>
+                    <li>看电视：10星星币/15分钟</li>
+                    <li>玩游戏：15星星币/15分钟</li>
+                    <li>每天最多可获得10个星星币</li>
+                    <li>每周最多兑换2小时娱乐时间</li>
+                </ul>
+            </div>
+            <button class="btn-primary" onclick="closeHelp()">知道了</button>
+        </div>
+    </div>
+
+    <!-- 兑换确认模态框 -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h2 id="confirmTitle"></h2>
+            <p id="confirmMessage"></p>
+            <div class="modal-buttons">
+                <button class="btn-secondary" onclick="cancelExchange()">取消</button>
+                <button class="btn-primary" onclick="confirmExchange()">确认兑换</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

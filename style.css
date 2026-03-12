@@ -1,0 +1,755 @@
+/* 基础样式 */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f39c12;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f1c40f;
+    --light-color: #f9f9f9;
+    --dark-color: #34495e;
+    --border-radius: 20px;
+    --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--dark-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+/* 头部样式 */
+header {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header-content {
+    animation: fadeIn 1s ease-out;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo i {
+    font-size: 3.5rem;
+    color: #ffd700;
+    animation: bounce 2s infinite;
+}
+
+.logo h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* 代币显示区域 */
+.token-section {
+    padding: 25px;
+    background-color: var(--light-color);
+    border-bottom: 3px dashed var(--primary-color);
+}
+
+.token-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.token-count {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    flex: 1;
+    min-width: 300px;
+}
+
+.token-icon {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    animation: spin 20s linear infinite;
+}
+
+.token-info h2 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.token-amount {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Fredoka One', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.token-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-size: 1.2rem;
+}
+
+.stat i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.stat span {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+/* 行为记录区域 */
+.behavior-section {
+    padding: 30px;
+}
+
+.behavior-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.behavior-section h2 i {
+    font-size: 2.5rem;
+}
+
+.behavior-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.behavior-btn {
+    background: white;
+    border: none;
+    padding: 25px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.behavior-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.behavior-btn.good {
+    border-left: 8px solid var(--success-color);
+}
+
+.behavior-btn.bad {
+    border-left: 8px solid var(--danger-color);
+}
+
+.behavior-btn i {
+    font-size: 2.5rem;
+}
+
+.behavior-btn.good i {
+    color: var(--success-color);
+}
+
+.behavior-btn.bad i {
+    color: var(--danger-color);
+}
+
+.behavior-tokens {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive;
+}
+
+.behavior-btn.good .behavior-tokens {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: var(--success-color);
+}
+
+.behavior-btn.bad .behavior-tokens {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--danger-color);
+}
+
+/* 兑换区域 */
+.exchange-section {
+    padding: 30px;
+    background-color: var(--light-color);
+    border-top: 3px dashed var(--secondary-color);
+    border-bottom: 3px dashed var(--secondary-color);
+}
+
+.exchange-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.exchange-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.exchange-item {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+    border: 3px solid transparent;
+}
+
+.exchange-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.exchange-item i {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.exchange-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.exchange-details {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.exchange-cost {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 20px;
+}
+
+/* 按钮样式 */
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-color), #5d9cec);
+    color: white;
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(74, 144, 226, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--dark-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--light-color);
+    transform: translateY(-3px);
+}
+
+/* 历史记录区域 */
+.history-section {
+    padding: 30px;
+}
+
+.history-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.history-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+}
+
+.history-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.5s ease-out;
+}
+
+.history-item.good {
+    border-left: 5px solid var(--success-color);
+}
+
+.history-item.bad {
+    border-left: 5px solid var(--danger-color);
+}
+
+.history-item.exchange {
+    border-left: 5px solid var(--secondary-color);
+}
+
+.history-content {
+    flex: 1;
+}
+
+.history-content p {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.history-time {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.history-tokens {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Fredoka One', cursive;
+}
+
+.history-item.good .history-tokens {
+    color: var(--success-color);
+}
+
+.history-item.bad .history-tokens {
+    color: var(--danger-color);
+}
+
+.history-item.exchange .history-tokens {
+    color: var(--secondary-color);
+}
+
+/* 页脚样式 */
+footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: popIn 0.5s ease-out;
+}
+
+.modal-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.help-content {
+    margin-bottom: 30px;
+}
+
+.help-content h3 {
+    font-size: 1.8rem;
+    margin: 25px 0 15px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.help-content ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.help-content li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.help-content li:before {
+    content: "✨";
+    position: absolute;
+    left: 0;
+}
+
+.help-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.help-item {
+    background: var(--light-color);
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.help-item.good {
+    border: 3px solid var(--success-color);
+}
+
+.help-item.bad {
+    border: 3px solid var(--danger-color);
+}
+
+.help-item h4 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        border-radius: 15px;
+    }
+    
+    .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo h1 {
+        font-size: 2.2rem;
+    }
+    
+    .token-display {
+        flex-direction: column;
+    }
+    
+    .token-count, .token-stats {
+        min-width: 100%;
+    }
+    
+    .behavior-grid, .exchange-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .token-amount {
+        font-size: 2.5rem;
+    }
+    
+    .token-icon {
+        font-size: 3rem;
+    }
+    
+    .token-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .behavior-btn, .exchange-item {
+        padding: 15px 10px;
+    }
+    
+    .behavior-btn {
+        font-size: 1rem;
+    }
+    
+    .behavior-btn i {
+        font-size: 2rem;
+    }
+    
+    .behavior-tokens {
+        font-size: 1.2rem;
+        padding: 5px 15px;
+    }
+    
+    .behavior-section h2, .exchange-section h2, .history-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .stat {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .stat i {
+        font-size: 1.5rem;
+    }
+    
+    .exchange-item i {
+        font-size: 2.5rem;
+    }
+    
+    .exchange-item h3 {
+        font-size: 1.5rem;
+    }
+    
+    .exchange-cost {
+        font-size: 1.5rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* 移动设备触摸优化 */
+@media (hover: none) and (pointer: coarse) {
+    .behavior-btn:hover, .exchange-item:hover, .btn-primary:hover, .btn-secondary:hover {
+        transform: none;
+    }
+    
+    .behavior-btn:active, .exchange-item:active, .btn-primary:active, .btn-secondary:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+/* 防止移动端缩放 */
+@viewport {
+    width: device-width;
+    zoom: 1.0;
+}
+
+/* 移动端状态栏安全区域 */
+.safe-area-top {
+    padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-left {
+    padding-left: env(safe-area-inset-left);
+}
+
+.safe-area-right {
+    padding-right: env(safe-area-inset-right);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
